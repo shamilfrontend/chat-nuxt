@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import { interopDefault } from './utils'
 
+const _4aba30a8 = () => interopDefault(import('../pages/chat.vue' /* webpackChunkName: "pages/chat" */))
 const _7e79a2b2 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 Vue.use(Router)
@@ -79,6 +80,10 @@ export function createRouter() {
     scrollBehavior,
 
     routes: [{
+      path: "/chat",
+      component: _4aba30a8,
+      name: "chat"
+    }, {
       path: "/",
       component: _7e79a2b2,
       name: "index"

@@ -4,8 +4,9 @@ import NuxtLoading from './components/nuxt-loading.vue'
 import '../assets/style/app.styl'
 
 import _6f6c098b from '../layouts/default.vue'
+import _77430317 from '../layouts/empty.vue'
 
-const layouts = { "_default": _6f6c098b }
+const layouts = { "_default": _6f6c098b,"_empty": _77430317 }
 
 export default {
   head: {"title":"chat-nuxt","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"My fine Nuxt.js project"},{"hid":"mobile-web-app-capable","name":"mobile-web-app-capable","content":"yes"},{"hid":"apple-mobile-web-app-title","name":"apple-mobile-web-app-title","content":"chat-nuxt"},{"hid":"author","name":"author","content":"ShamilFrontend"},{"hid":"theme-color","name":"theme-color","content":"#ff0000"},{"hid":"og:type","name":"og:type","property":"og:type","content":"website"},{"hid":"og:title","name":"og:title","property":"og:title","content":"chat-nuxt"},{"hid":"og:site_name","name":"og:site_name","property":"og:site_name","content":"chat-nuxt"},{"hid":"og:description","name":"og:description","property":"og:description","content":"My fine Nuxt.js project"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Roboto:300,400,500,700|Material+Icons"},{"rel":"manifest","href":"\u002F_nuxt\u002Fmanifest.35ed418b.json"},{"rel":"shortcut icon","href":"\u002F_nuxt\u002Ficons\u002Ficon_64.9mld2VBMsQ$.png"},{"rel":"apple-touch-icon","href":"\u002F_nuxt\u002Ficons\u002Ficon_512.9mld2VBMsQ$.png","sizes":"512x512"}],"style":[],"script":[],"htmlAttrs":{"lang":"en"}},
