@@ -1,13 +1,20 @@
 <template>
-  <h1>Chat {{ user.name }}</h1>
+  <div class="">
+    <ul>
+      <li
+        v-for="(message, index) in messages"
+        :key="index"
+      >
+        {{ message.text }}
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
   import {mapState} from 'vuex';
 
   export default {
-    layout: 'empty',
-
     head() {
       return {
         title: `Комната ${this.user.room}`,
@@ -17,7 +24,7 @@
     middleware: ['chat'],
 
     computed: {
-      ...mapState(['user']),
+      ...mapState(['user', 'messages']),
     }
   }
 </script>
