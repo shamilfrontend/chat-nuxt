@@ -1,6 +1,6 @@
 <template>
-  <div class="">
-    <div v-if="name === 'admin'" class="system">
+  <div>
+    <div v-if="name === 'Admin'" class="system">
       <p class="text-xs-center">{{ text }}</p>
       <hr>
     </div>

@@ -24,11 +24,13 @@ io.on('connection', socket => {
 
     callback({userId: socket.id});
 
-    socket.emit('newMessage', createMessage('admin', `Добро пожаловать ${data.name}`));
+    io.to(data.room).emit('updateUsers', users.getByRoom(data.room));
+
+    socket.emit('newMessage', createMessage('Admin', `Добро пожаловать ${data.name}`));
 
     socket.broadcast
       .to(data.room)
-      .emit('newMessage', createMessage('admin', `Пользователь ${data.name} зашел`));
+      .emit('newMessage', createMessage('Admin', `Пользователь ${data.name} зашел`));
   });
 
   // создание сообщения
@@ -49,6 +51,34 @@ io.on('connection', socket => {
     }
     callback();
   });
+
+  // выход пользователя
+  socket.on('userLeft', (id, callback) => {
+    const user = users.remove(id);
+
+    if (user) {
+      io.to(user.room).emit('updateUsers', users.getByRoom(user.room));
+      io.to(user.room).emit('newMessage', createMessage(
+        'Admin',
+        `Пользователь ${user.name} вышел.`
+      ))
+    }
+
+    callback();
+  });
+
+  // пользователь закрыл вкладку
+  socket.on('disconnect', () => {
+    const user = users.remove(socket.id);
+
+    if (user) {
+      io.to(user.room).emit('updateUsers', users.getByRoom(user.room));
+      io.to(user.room).emit('newMessage', createMessage(
+        'Admin',
+        `Пользователь ${user.name} вышел.`
+      ))
+    }
+  })
 });
 
 module.exports = {

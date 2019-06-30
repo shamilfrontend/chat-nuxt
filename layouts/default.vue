@@ -8,21 +8,24 @@
       <v-list subheader>
         <v-subheader>Список людей в комнате</v-subheader>
         <v-list-tile
-          v-for="user in users"
-          :key="user.id"
+          v-for="(item, index) in users"
+          :key="item.id"
           avatar
           @click.prevent
         >
           <v-list-tile-avatar>
-            <img :src="user.avatar" :alt="user.name">
+            <img
+              :src="index % 2 ? boyAvatar : girlAvatar"
+              :alt="item.name"
+            >
           </v-list-tile-avatar>
 
           <v-list-tile-content>
-            <v-list-tile-title>{{ user.name }}</v-list-tile-title>
+            <v-list-tile-title>{{ item.name }}</v-list-tile-title>
           </v-list-tile-content>
 
           <v-list-tile-action>
-            <v-icon :color="user.active ? 'teal' : 'grey'">chat_bubble</v-icon>
+            <v-icon :color="item.id === user.id ? 'teal' : 'grey'">chat_bubble</v-icon>
           </v-list-tile-action>
         </v-list-tile>
       </v-list>
@@ -40,7 +43,7 @@
 
     <v-content>
       <div style="height: 100%;">
-        <nuxt />
+        <nuxt/>
       </div>
     </v-content>
   </v-app>
@@ -53,7 +56,9 @@
     data() {
       return {
         drawer: true,
-        users: [
+        boyAvatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
+        girlAvatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
+        users2: [
           {
             id: 0,
             name: 'Jason Api',
@@ -81,15 +86,17 @@
     },
 
     computed: {
-      ...mapState(['user']),
+      ...mapState(['user', 'users']),
     },
 
     methods: {
       ...mapMutations(['clearData']),
 
       exit() {
-        this.$router.push('/?leftChat');
-        this.clearData();
+        this.$socket.emit('userLeft', this.user.id, () => {
+          this.$router.push('/?leftChat');
+          this.clearData();
+        });
       }
     }
   }
