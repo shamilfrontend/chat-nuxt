@@ -4,14 +4,7 @@ export const state = () => ({
     room: '777'
   },
 
-  messages: [
-    {
-      text: 'Salam popolam'
-    },
-    {
-      text: 'va al Salam popolam'
-    },
-  ],
+  messages: [],
 });
 
 export const mutations = {
@@ -26,9 +19,3 @@ export const mutations = {
     state.messages.push(message);
   }
 };
-
-// export const actions = {
-//   SOCKET_newMessage(ctx, data) {
-//     console.log('message received', data);
-//   }
-// };
