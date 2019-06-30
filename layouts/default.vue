@@ -3,6 +3,7 @@
     <v-navigation-drawer
       app
       v-model="drawer"
+      mobile-break-point="992"
     >
       <v-list subheader>
         <v-subheader>Список людей в комнате</v-subheader>
@@ -38,7 +39,7 @@
     </v-toolbar>
 
     <v-content>
-      <div>
+      <div style="height: 100%;">
         <nuxt />
       </div>
     </v-content>
