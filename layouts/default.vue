@@ -94,7 +94,7 @@
 
       exit() {
         this.$socket.emit('userLeft', this.user.id, () => {
-          this.$router.push('/?leftChat');
+          this.$router.push('/?message=leftChat');
           this.clearData();
         });
       }

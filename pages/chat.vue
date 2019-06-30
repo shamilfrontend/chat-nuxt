@@ -1,6 +1,6 @@
 <template>
   <div class="c-wrap">
-    <div class="c-chat">
+    <div class="c-chat" ref="chatList">
       <Message
         v-for="(message, index) in messages"
         :key="index"
@@ -39,6 +39,14 @@
 
     computed: {
       ...mapState(['user', 'messages']),
+    },
+
+    watch: {
+      messages() {
+        this.$nextTick(() => {
+          this.$refs.chatList.scrollTop = this.$refs.chatList.scrollHeight;
+        });
+      }
     }
   }
 </script>
